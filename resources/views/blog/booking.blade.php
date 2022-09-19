@@ -42,12 +42,12 @@
             </h1>
         </div>
         <div>
-            <div class="mt-4 p-5 text-white rounded border-dark border-2">
+            <div class="mt-4 mx-3 p-5 text-white rounded border-dark border-2">
             <p class="text-center fw-bolder fs-3 text-dark">
                 Your booking has been received and placed into our order processing system.
             </p>
-            <p class="text-dark text-center">
-                Please do not reload this page without making a note of your <strong>order number</strong>. 
+            <p class="text-danger text-center">
+                <b>WARNING!</b> Please do not reload this page without making a note of your <strong>order number</strong>. 
                 Keep it in the event you need to comunicate with <br> us about your order.      
             </p>
         </div>

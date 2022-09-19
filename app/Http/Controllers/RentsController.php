@@ -53,6 +53,7 @@ class RentsController extends Controller
 
         $price = Bike::first();
         $brand = Bike::first();
+        $key = uniqid();
         
         Rental::create([
             'user_id' => Auth::id(),
@@ -61,9 +62,9 @@ class RentsController extends Controller
             'bike_price' => intval($price->price),
             'start_date' => $request->date,
             'duration' => $request->period,
+            'key' => $key
         ]);
 
-        $key = uniqid();
 
         return redirect(route('blog.booking'))->with('message', 'Booking Confirmed with the Id: ' . $key .
         '.  Thank you for using our bike rentals system. We wish you a safe ride! ');

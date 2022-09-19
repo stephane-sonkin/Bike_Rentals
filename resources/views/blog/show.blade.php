@@ -25,7 +25,7 @@
       <p class="">{{ $bike->description }}</p>
     </div>
     <div class="container text-center fw-bolder fs-3 pt-5 my-5 border-top boder-dark border-2">
-      Rent this car
+      Rent this bike :
     </div>
       {{-- form div --}}
     <div class="container border border-3 w-50 mb-5">

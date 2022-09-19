@@ -15,7 +15,8 @@ class Rental extends Model
         'start_date', 
         'bike_brand', 
         'bike_price', 
-        'duration'
+        'duration',
+        'key'
     ];
 
     public function user()

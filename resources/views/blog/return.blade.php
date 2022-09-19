@@ -42,7 +42,7 @@
             </h1>
         </div>
         <div>
-            <div class="mt-4 p-5 text-white rounded border-dark border-2">
+            <div class="mt-4 mx-3 p-5 text-white rounded border-dark border-2">
             <p class="text-center fw-bolder fs-3 text-dark">
                 Your bike has been received and placed into our return processing system.
             </p>

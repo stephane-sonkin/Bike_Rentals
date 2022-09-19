@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('duration');
             $table->string('bike_brand');
             $table->integer('bike_price');
+            $table->string('key');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_bike')->references('id')->on('bikes')->onDelete('cascade');
             $table->timestamps();

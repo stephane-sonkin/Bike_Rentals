@@ -19,19 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-// Route::resource('blog', BikesController::class);
-
-// Route::get('blog/{id}', BikesController::class, 'show');
 
 
 
-Route::prefix('bike')->group(function () {
+Route::prefix('bikes')->group(function () {
     Route::get('/', [BikesController::class, 'index'])->name('blog.index');
     Route::get('/booking_confirmation', [RentsController::class, 'index'])->name('blog.booking');
     Route::get('/returning_confirmation', [RentsController::class, 'return'])->name('blog.return');
@@ -40,4 +37,3 @@ Route::prefix('bike')->group(function () {
     Route::delete('/{id}', [RentsController::class, 'destroy'])->name('blog.destroy');
 });
 
-// Route::resource('rent', RentsController::class);
