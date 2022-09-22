@@ -7,23 +7,33 @@ use App\Models\Bike;
 use App\Models\Rental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Global_;
 
 class RentsController extends Controller
 {
+    public $B_brand;
+    public $B_price;
+    public $R_start;
+    public $R_duration;
+    public $R_key;
+    public $R_total;
+
     public function __construct()
     {
         $this->middleware('auth')->only(['index', 'store', 'return', 'destroy']);
         
     }
 
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('blog.booking'); 
+        return view('blog.booking');
+
+        
     }
 
     /**
@@ -54,7 +64,7 @@ class RentsController extends Controller
         $price = Bike::first();
         $brand = Bike::first();
         $key = uniqid();
-        
+
         Rental::create([
             'user_id' => Auth::id(),
             'id_bike' => $id,
@@ -65,10 +75,25 @@ class RentsController extends Controller
             'key' => $key
         ]);
 
+            $this->B_brand = $brand->brand;
+            $this->B_price = intval($price->price);
+            $this->R_start = $request->date;
+            $this->R_duration = $request->period;
+            $this->R_key = $key;
+            $this->R_total = $this->B_price * $this->R_duration;
+        
 
-        return redirect(route('blog.booking'))->with('message', 'Booking Confirmed with the Id: ' . $key .
-        '.  Thank you for using our bike rentals system. We wish you a safe ride! ');
+            session()->flash('key', $this->R_key);
+            session()->flash('brand', $this->B_brand);
+            session()->flash('price', $this->B_price);
+            session()->flash('date', $this->R_start);
+            session()->flash('duration', $this->R_duration);
+            session()->flash('total', $this->R_total);
+
+        return redirect(route('blog.booking'));
+
     }
+
 
     /**
      * Display the specified resource.  
@@ -78,7 +103,8 @@ class RentsController extends Controller
      */
     public function show($id)
     {
-        //
+        //  
+
     }
 
     /**

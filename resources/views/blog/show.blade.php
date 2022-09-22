@@ -41,16 +41,21 @@
         method="POST">
         @csrf
         <div class="mb-3">
-          <label for="date" class="form-label">Satrt date:</label>
+          <label for="date" class="form-label">Start date:</label>
           <input type="date" class="form-control" id="date" name="date">
         </div>
         <div class="mb-3">
-          <label for="period" class="form-label">Period:</label>
+          <label for="period" class="form-label">Duration:</label>
           <input type="number" class="form-control" id="period" placeholder="Number of days" name="period">
         </div>
-        <button type="submit" style="background-color: rgb(60, 185, 207); 
-        color:white; padding:10px; border-radius:5px;">Submit</button>
+        <button type="submit" class="mb-3" style="background-color: rgb(60, 185, 207); 
+        color:white; padding:10px; border-radius:5px;">RENT NOW</button>
       </form>
+    </div>
+    <div class="container mb-5">
+      <p class="text-center text-dark"><strong>Note : </strong>You will be charged with 
+        <span class="text-danger">50$</span> for each day after the due end date.
+      </p>
     </div>
 </body>
 </html>

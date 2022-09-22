@@ -44,13 +44,13 @@ rel="stylesheet">
                       <td>{{ $rental->bike_price * $rental->duration}}$</td>
                       <td>
                         <form action="{{ route('blog.destroy', $rental->id) }}"
-                            method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="form-control text-light bg-danger"
-                                type="submit">
-                                Return
-                            </button>
+                          method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button class="form-control text-light bg-danger"
+                            type="submit">
+                            Return
+                          </button>
                         </form>
                       </td>
                     </tr>
