@@ -21,11 +21,24 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="collapsibleNavbar">
+              @if (Auth::user())
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link text-dark border-3 border-start border-dark" 
                   href="{{ route('dashboard') }}">Profile</a>
                 </li>
+                @endif
+                @if (!Auth::user())
+                <li class="nav-item me-5 ">
+                  <a class="nav-link text-dark border-start border-dark border-3 px-3" 
+                  href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item  ">
+                  <a class="nav-link text-dark border-3 border-start border-dark px-3" 
+                  href="{{ route('register') }}">Register</a>
+                </li>
+              
+                @endif
               </ul>
             </div>
           </div>
