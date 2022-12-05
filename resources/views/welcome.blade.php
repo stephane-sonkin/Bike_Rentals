@@ -11,37 +11,51 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="banner-area">
-        <div>
-          <nav class="navbar navbar-expand-sm bg-light navbar-light">
-            <div class="container-fluid">
-              <a class="navbar-brand fw-bolder" href="#">Bike Rentals</a>
-              <div class="text-end">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-            
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+  <div class="banner-area">
+    <div>
+      <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bolder" href="#">Bike Rentals</a>
+          <div class="text-end">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            {{-- @if (Route::has('login')) --}}
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                  @if (Auth::user())
+                  {{-- @auth --}}
+                  <li class="nav-item">
+                    <a class="nav-link text-dark border-3 border-start border-dark" 
+                    href="{{ route('dashboard') }}">Profile</a>
+                  </li>
+                  @endif
+                  {{-- @else --}}
+                  @if (!Auth::user())
+                  <li class="nav-item me-5 ">
+                    <a class="nav-link text-dark border-start border-dark border-3 px-3" 
+                    href="{{ route('login') }}">Login</a>
+                  </li>
+                  {{-- @if (Route::has('register')) --}}
+                  <li class="nav-item  ">
+                    <a class="nav-link text-dark border-3 border-start border-dark px-3" 
+                    href="{{ route('register') }}">Register</a>
+                  </li>
+                  @endif
+                  {{-- @endauth --}}
               </div>
-            </div>
-          </nav>
-        </div>
-        <div class="content-area">
-            <div class="content">
-              <h1><b>Bikes Rentals</b></h1>
-              <p>Online bike rental service</p>      
-            </div>
           </div>
+        </div>
+      </nav>
+      </div>
+        <div class="content-area">
+          <div class="content">
+            <h1><b>Bikes Rentals</b></h1>
+            <p>Online bike rental service</p>   
+            <button class="but" type="button"><a href="{{ route('blog.index') }}">See available bikes</a></button>
+          </div>   
+        </div>
+    </div>
+  </div>
 </body>
 </html>

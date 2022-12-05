@@ -27,19 +27,20 @@
                   <a class="nav-link text-dark border-3 border-start border-dark" 
                   href="{{ route('dashboard') }}">Profile</a>
                 </li>
-                @endif
-                @if (!Auth::user())
+              </ul>
+              @endif
+              @if (!Auth::user())
+              <ul class="navbar-nav">
                 <li class="nav-item me-5 ">
                   <a class="nav-link text-dark border-start border-dark border-3 px-3" 
                   href="{{ route('login') }}">Login</a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item">
                   <a class="nav-link text-dark border-3 border-start border-dark px-3" 
                   href="{{ route('register') }}">Register</a>
                 </li>
-              
-                @endif
               </ul>
+              @endif
             </div>
           </div>
         </div>
@@ -59,20 +60,22 @@
     <div class="avail">
       <p>Available bikes</p>
     </div>
-    @foreach ($bikes as $bike)
-    <div class="card container border-none shadow-lg my-5 w-75" style="width:400px">
-      <a href="{{ route('blog.show', $bike->id) }}">
-        <img class="rounded-bottom card-img-top" src="{{ URL($bike->image_path) }}" 
-        alt="Card image" style="height: 450px; width:100%">
-        <div class="card-body">
-          <h4 class="card-title fw-bolder">{{ $bike->brand }}</h4>
-          <h3 class="card-title fw-bolder">{{ $bike->price }}$</h3>
-          <p class="card-text">{{ $bike->description }}</p>
-        </div>
-      </a>
+    <div class="row container">
+      @foreach ($bikes as $bike)
+      <div class="card border-none shadow-lg my-5 col-sm-4">
+        <a href="{{ route('blog.show', $bike->id) }}">
+          <img class="rounded-bottom card-img-top" src="{{ URL($bike->image_path) }}" 
+          alt="Card image" style="height: 250px; width:500px">
+          <div class="card-body">
+            <h4 class="card-title fw-bolder">{{ $bike->brand }}</h4>
+            <h3 class="card-title fw-bolder">{{ $bike->price }}$</h3>
+            <p class="card-text">{{ $bike->description }}</p>
+          </div>
+        </a>
+      </div>
+      @endforeach
     </div>
   </div>
-  @endforeach
 
   <div>
     {{ $bikes->links() }}
